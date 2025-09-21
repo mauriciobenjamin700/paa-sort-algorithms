@@ -27,6 +27,8 @@ def bucket_sort(
     if not arr:
         return []
 
+    arr = arr.copy()
+
     min_value = min(arr)
     max_value = max(arr)
     bucket_count = max(1, len(arr) // items_per_bucket)

@@ -1,4 +1,4 @@
-# BUCKET SORT E GNOME SORT
+# Bucket Sort E Gnome Sort
 
 ## Introdução ao Bucket Sort
 
@@ -14,55 +14,57 @@ O Bucket Sort é um exemplo clássico de como a estrutura dos dados pode ser exp
 
 ```python
 def bucket_sort(
-        arr: list[int],
-        reverse: bool = False,
-        items_per_bucket: int = 5
+      arr: list[int],
+      reverse: bool = False,
+      items_per_bucket: int = 5
 ) -> list[int]:
-    """
-    Ordena uma lista de inteiros usando o algoritmo Bucket Sort.
+   """
+   Ordena uma lista de inteiros usando o algoritmo Bucket Sort.
 
-    Funcionamento:
-    1. O algoritmo cria vários "baldes" (listas auxiliares) para distribuir
-        os elementos da lista original conforme seus valores.
-    2. Cada elemento é colocado em um balde de acordo com seu valor, usando
-        uma função de mapeamento baseada no valor mínimo, máximo e tamanho dos
-        baldes.
-    3. Após a distribuição, cada balde é ordenado individualmente usando um
-        algoritmo de ordenação interno (neste caso, a função sorted do Python).
-        obs: Geralmente o Tim Sort, que é o algoritmo usado pela função sorted.
-    4. Por fim, os baldes ordenados são concatenados para formar a lista
-        final ordenada.
+   Funcionamento:
+   1. O algoritmo cria vários "baldes" (listas auxiliares) para distribuir
+      os elementos da lista original conforme seus valores.
+   2. Cada elemento é colocado em um balde de acordo com seu valor, usando
+      uma função de mapeamento baseada no valor mínimo, máximo e tamanho dos
+      baldes.
+   3. Após a distribuição, cada balde é ordenado individualmente usando um
+      algoritmo de ordenação interno (neste caso, a função sorted do Python).
+      obs: Geralmente o Tim Sort, que é o algoritmo usado pela função sorted.
+   4. Por fim, os baldes ordenados são concatenados para formar a lista
+      final ordenada.
 
-    O parâmetro 'reverse' permite escolher entre ordem crescente (padrão) ou
-    decrescente.
-    O Bucket Sort é eficiente para listas com valores distribuídos
-    uniformemente.
-    """
+   O parâmetro 'reverse' permite escolher entre ordem crescente (padrão) ou
+   decrescente.
+   O Bucket Sort é eficiente para listas com valores distribuídos
+   uniformemente.
+   """
 
-    if not arr:
-        return []
+   if not arr:
+      return []
 
-    min_value = min(arr)
-    max_value = max(arr)
-    bucket_count = max(1, len(arr) // items_per_bucket)
-    bucket_size = max(1, (max_value - min_value + 1) // bucket_count)
+   arr = arr.copy()
 
-    buckets = [[] for _ in range(bucket_count)]
+   min_value = min(arr)
+   max_value = max(arr)
+   bucket_count = max(1, len(arr) // items_per_bucket)
+   bucket_size = max(1, (max_value - min_value + 1) // bucket_count)
 
-    for num in arr:
-        idx = min((num - min_value) // bucket_size, bucket_count - 1)
-        buckets[idx].append(num)
+   buckets = [[] for _ in range(bucket_count)]
 
-    sorted_arr = []
+   for num in arr:
+      idx = min((num - min_value) // bucket_size, bucket_count - 1)
+      buckets[idx].append(num)
 
-    for bucket in buckets:
-        sorted_bucket = sorted(bucket, reverse=reverse)
-        sorted_arr.extend(sorted_bucket)
+   sorted_arr = []
 
-    return sorted_arr
+   for bucket in buckets:
+      sorted_bucket = sorted(bucket, reverse=reverse)
+      sorted_arr.extend(sorted_bucket)
+
+   return sorted_arr
 ```
 
-### Passo a passo do código
+### Passo a passo do código do Bucket Sort
 
 1. **Verificação da lista**
 
@@ -137,7 +139,7 @@ def bucket_sort(
 
    A lista final, já ordenada, é retornada.
 
-### Lógica por trás do algoritmo
+### Lógica por trás do algoritmo Bucket Sort
 
 - O Bucket Sort é eficiente para listas com valores distribuídos uniformemente, pois a distribuição nos baldes tende a ser equilibrada.
 - O parâmetro `items_per_bucket` permite ajustar a quantidade de baldes, influenciando a granularidade da distribuição.
@@ -146,7 +148,7 @@ def bucket_sort(
 
 Esse método é especialmente útil para dados que já estão quase ordenados ou distribuídos de forma uniforme, tornando a ordenação mais rápida do que métodos tradicionais em alguns casos.
 
-## Exemplo de teste de mesa
+## Exemplo de teste de mesa com Bucket Sort
 
 Considere a lista abaixo com 20 números inteiros:
 
@@ -156,7 +158,7 @@ ordenada = bucket_sort(lista)
 print("Lista ordenada:", ordenada)
 ```
 
-### Passo a passo do algoritmo
+### Passo a passo do algoritmo Bucket Sort
 
 1. **Lista original:**
    `[15, 3, 22, 7, 9, 1, 18, 5, 12, 6, 10, 2, 20, 8, 13, 4, 19, 11, 16, 14]`
@@ -186,10 +188,170 @@ print("Lista ordenada:", ordenada)
 7. **Concatenação dos baldes:**
    `[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19, 20, 22]`
 
-### Saída final
+### Saída final do BucketSort
 
 ```bash
 Lista ordenada: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19, 20, 22]
 ```
 
 Esse teste de mesa mostra como os elementos são distribuídos, ordenados e concatenados pelo Bucket Sort.
+
+## Introdução ao Gnome Sort
+
+O Gnome Sort é um algoritmo de ordenação simples e intuitivo, criado por Ivan Lacarak em 2000. Ele é inspirado no modo como um gnomo de jardim organizaria uma fileira de vasos: comparando elementos adjacentes e trocando-os quando necessário, voltando para corrigir qualquer desordem anterior. O Gnome Sort é semelhante ao Bubble Sort, mas volta uma posição após cada troca, garantindo que todos os elementos estejam no lugar correto.
+
+O propósito do Gnome Sort é ordenar listas de forma didática e fácil de entender, sendo útil para fins educacionais e para listas pequenas. Apesar de sua simplicidade, não é eficiente para grandes volumes de dados.
+
+O Gnome Sort exemplifica como algoritmos podem ser construídos a partir de ideias simples de comparação e troca.
+
+### Gnome Sort - Código completo
+
+```python
+def gnome_sort(
+   arr: list[int],
+   reverse: bool = False
+) -> list[int]:
+   """
+   Ordena uma lista de inteiros usando o algoritmo Gnome Sort.
+
+   Funcionamento:
+   1. O algoritmo percorre a lista comparando elementos adjacentes.
+   2. Se os elementos estiverem fora de ordem, eles são trocados e o índice
+   volta uma posição.
+   3. Se estiverem em ordem, avança para o próximo elemento.
+   4. O processo continua até o final da lista, garantindo que todos os
+   elementos estejam ordenados.
+
+   O parâmetro 'reverse' permite escolher entre ordem crescente (padrão) ou
+   decrescente.
+   O Gnome Sort é simples e intuitivo, mas não é eficiente para
+   listas grandes.
+   """
+
+   if not arr:
+      return []
+
+   arr = arr.copy()
+   i = 0
+   n = len(arr)
+   while i < n:
+      if i == 0:
+         i += 1
+      if (
+         (not reverse and arr[i] >= arr[i - 1])
+         or
+         (reverse and arr[i] <= arr[i - 1])
+      ):
+         i += 1
+      else:
+         arr[i], arr[i - 1] = arr[i - 1], arr[i]
+         i -= 1
+   return arr
+```
+
+### Passo a passo do código
+
+1. **Verificação da lista**
+
+   ```python
+   if not arr:
+       return []
+   ```
+
+   Se a lista estiver vazia, retorna uma lista vazia imediatamente.
+
+2. **Preparação da lista**
+
+   ```python
+   arr = arr.copy()
+   i = 0
+   n = len(arr)
+   ```
+
+   Cria uma cópia da lista para não modificar o original e inicializa os índices.
+
+3. **Percorrendo e comparando elementos**
+
+   ```python
+   while i < n:
+       if i == 0:
+           i += 1
+       if (
+           (not reverse and arr[i] >= arr[i - 1])
+           or
+           (reverse and arr[i] <= arr[i - 1])
+       ):
+           i += 1
+       else:
+           arr[i], arr[i - 1] = arr[i - 1], arr[i]
+           i -= 1
+   ```
+
+   Percorre a lista, compara elementos adjacentes e troca se necessário. Após cada troca, volta uma posição para garantir que o novo elemento esteja no lugar correto.
+
+4. **Retorno da lista ordenada**
+
+   ```python
+   return arr
+   ```
+
+   Retorna a lista ordenada.
+
+### Lógica por trás do algoritmo
+
+- O Gnome Sort é eficiente apenas para listas pequenas ou quase ordenadas.
+- O parâmetro `reverse` permite escolher entre ordem crescente ou decrescente.
+- O algoritmo é fácil de implementar e entender, sendo útil para fins didáticos.
+- Sua principal característica é voltar uma posição após cada troca, garantindo que todos os elementos estejam no lugar correto.
+
+## Exemplo de teste de mesa
+
+Considere a lista abaixo com 10 números inteiros:
+
+```python
+lista = [7, 3, 5, 2, 8, 1, 4, 6, 9, 0]
+ordenada = gnome_sort(lista)
+print("Lista ordenada:", ordenada)
+```
+
+### Passo a passo do algoritmo
+
+1. **Lista original:**
+   `[7, 3, 5, 2, 8, 1, 4, 6, 9, 0]`
+
+2. **Comparações e trocas:**
+   - 7 > 3 → troca → `[3, 7, 5, 2, 8, 1, 4, 6, 9, 0]`
+   - 7 > 5 → troca → `[3, 5, 7, 2, 8, 1, 4, 6, 9, 0]`
+   - 7 > 2 → troca → `[3, 5, 2, 7, 8, 1, 4, 6, 9, 0]`
+   - 5 > 2 → troca → `[3, 2, 5, 7, 8, 1, 4, 6, 9, 0]`
+   - 3 > 2 → troca → `[2, 3, 5, 7, 8, 1, 4, 6, 9, 0]`
+   - 8 > 1 → troca → `[2, 3, 5, 7, 1, 8, 4, 6, 9, 0]`
+   - 7 > 1 → troca → `[2, 3, 5, 1, 7, 8, 4, 6, 9, 0]`
+   - 5 > 1 → troca → `[2, 3, 1, 5, 7, 8, 4, 6, 9, 0]`
+   - 3 > 1 → troca → `[2, 1, 3, 5, 7, 8, 4, 6, 9, 0]`
+   - 2 > 1 → troca → `[1, 2, 3, 5, 7, 8, 4, 6, 9, 0]`
+   - 8 > 4 → troca → `[1, 2, 3, 5, 7, 4, 8, 6, 9, 0]`
+   - 7 > 4 → troca → `[1, 2, 3, 5, 4, 7, 8, 6, 9, 0]`
+   - 5 > 4 → troca → `[1, 2, 3, 4, 5, 7, 8, 6, 9, 0]`
+   - 8 > 6 → troca → `[1, 2, 3, 4, 5, 7, 6, 8, 9, 0]`
+   - 7 > 6 → troca → `[1, 2, 3, 4, 5, 6, 7, 8, 9, 0]`
+   - 9 > 0 → troca → `[1, 2, 3, 4, 5, 6, 7, 8, 0, 9]`
+   - 8 > 0 → troca → `[1, 2, 3, 4, 5, 6, 7, 0, 8, 9]`
+   - 7 > 0 → troca → `[1, 2, 3, 4, 5, 6, 0, 7, 8, 9]`
+   - 6 > 0 → troca → `[1, 2, 3, 4, 5, 0, 6, 7, 8, 9]`
+   - 5 > 0 → troca → `[1, 2, 3, 4, 0, 5, 6, 7, 8, 9]`
+   - 4 > 0 → troca → `[1, 2, 3, 0, 4, 5, 6, 7, 8, 9]`
+   - 3 > 0 → troca → `[1, 2, 0, 3, 4, 5, 6, 7, 8, 9]`
+   - 2 > 0 → troca → `[1, 0, 2, 3, 4, 5, 6, 7, 8, 9]`
+   - 1 > 0 → troca → `[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]`
+
+3. **Lista final ordenada:**
+   `[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]`
+
+### Saída final
+
+```bash
+Lista ordenada: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+
+Esse teste de mesa mostra como o Gnome Sort percorre, compara e troca elementos até que toda a lista esteja ordenada.
