@@ -1,6 +1,4 @@
-def main():
-    print("Hello from paa-sort-algorithms!")
+from src import run_comparative_analysis
 
 
-if __name__ == "__main__":
-    main()
+run_comparative_analysis()
