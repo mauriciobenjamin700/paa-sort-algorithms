@@ -1,4 +1,5 @@
 from datetime import datetime
+import json
 
 from src.scripts import bucket_sort, gnome_sort
 from src.utils import (
@@ -11,19 +12,16 @@ from src.data import (
     random_items_1_000,
     random_items_10_000,
     random_items_100_000,
-    random_items_1_000_000,
     sorted_items_10,
     sorted_items_100,
     sorted_items_1_000,
     sorted_items_10_000,
     sorted_items_100_000,
-    sorted_items_1_000_000,
     unsorted_items_10,
     unsorted_items_100,
     unsorted_items_1_000,
     unsorted_items_10_000,
     unsorted_items_100_000,
-    unsorted_items_1_000_000,
 )
 
 
@@ -35,7 +33,7 @@ def run_comparative_analysis():
     Gera gráficos comparativos dos tempos de execução.
     """
 
-    sizes = [10, 100, 1_000, 10_000, 100_000, 1_000_000]
+    sizes = [10, 100, 1_000, 10_000, 100_000]
 
     sorted_items = [
         sorted_items_10,
@@ -43,7 +41,6 @@ def run_comparative_analysis():
         sorted_items_1_000,
         sorted_items_10_000,
         sorted_items_100_000,
-        sorted_items_1_000_000,
     ]
 
     unsorted_items = [
@@ -52,7 +49,6 @@ def run_comparative_analysis():
         unsorted_items_1_000,
         unsorted_items_10_000,
         unsorted_items_100_000,
-        unsorted_items_1_000_000,
     ]
 
     random_items = [
@@ -61,7 +57,6 @@ def run_comparative_analysis():
         random_items_1_000,
         random_items_10_000,
         random_items_100_000,
-        random_items_1_000_000,
     ]
 
     all_times_sorted = {
@@ -125,6 +120,8 @@ def run_comparative_analysis():
             start, end
         ))
 
+        print(f"Completed size: {sizes[index]}")
+
     save_multiple_plots(
         sizes,
         all_times_sorted,
@@ -142,3 +139,14 @@ def run_comparative_analysis():
         all_times_random,
         "results/random_comparison.png"
     )
+
+    with open("results/sorted_times.json", "w") as f:
+        json.dump(all_times_sorted, f, indent=4)
+
+    with open("results/unsorted_times.json", "w") as f:
+        json.dump(all_times_unsorted, f, indent=4)
+
+    with open("results/random_times.json", "w") as f:
+        json.dump(all_times_random, f, indent=4)
+
+    print("All done!")
