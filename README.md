@@ -1,4 +1,13 @@
-# Bucket Sort E Gnome Sort
+# Bucket Sort e Gnome Sort
+
+Equipe:
+
+- Mauricio Benjamin da Rocha
+- Pedro Antonio Vital
+
+## Introdução
+
+Este trabalho apresenta o estudo dos algoritmos de ordenação Bucket Sort e Gnome Sort, abordando suas definições, funcionamento, aspectos históricos, análise de complexidade, comparação de desempenho, resultados práticos e conclusões. O objetivo é compreender as diferenças, vantagens e limitações de cada método, utilizando exemplos e testes realizados na mesma plataforma.## Introdução
 
 ## Introdução ao Bucket Sort
 
@@ -9,6 +18,16 @@ O propósito do Bucket Sort é dividir os elementos em grupos (baldes) de acordo
 Esse método é especialmente útil para grandes volumes de dados que já estão quase ordenados ou distribuídos uniformemente, como dados de sensores, notas de alunos, ou qualquer situação em que os valores estejam espalhados de forma previsível.
 
 O Bucket Sort é um exemplo clássico de como a estrutura dos dados pode ser explorada para melhorar a eficiência dos algoritmos de ordenação.
+
+## Definições dos Algoritmos
+
+### Bucket Sort
+
+O Bucket Sort é um algoritmo de ordenação por distribuição, criado por Harold H. Seward em 1957 para uso em computadores IBM. Ele distribui os elementos em baldes (buckets) de acordo com seus valores, ordena cada balde individualmente e, por fim, concatena os baldes para obter a lista final ordenada. É eficiente para listas com valores distribuídos uniformemente.
+
+### Gnome Sort
+
+O Gnome Sort foi criado por Ivan Lacarak em 2000. É um algoritmo simples, inspirado no modo como um gnomo organizaria uma fileira de vasos: compara elementos adjacentes e troca-os se necessário, voltando para corrigir qualquer desordem anterior. É semelhante ao Bubble Sort, mas volta uma posição após cada troca.
 
 ### Bucket Sort - Código completo
 
@@ -355,3 +374,45 @@ Lista ordenada: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
 Esse teste de mesa mostra como o Gnome Sort percorre, compara e troca elementos até que toda a lista esteja ordenada.
+
+## Ordem de Complexidade
+
+- **Bucket Sort:**
+  - Melhor caso: $O(n + k)$, onde $k$ é o número de baldes.
+  - Pior caso: $O(n^2)$ (se todos os elementos caírem no mesmo balde).
+- **Gnome Sort:**
+  - Melhor caso: $O(n)$ (lista já ordenada).
+  - Pior caso: $O(n^2)$ (lista invertida).
+
+## Comparação de Funcionamento
+
+- **Bucket Sort:**
+  - Mais eficiente para listas grandes e distribuídas uniformemente.
+  - Utiliza ordenação interna nos baldes (ex: TimSort).
+- **Gnome Sort:**
+  - Simples, fácil de implementar e entender.
+  - Indicado para listas pequenas ou quase ordenadas.
+  - Lembra o Bubble Sort, mas volta após cada troca.
+
+### Comparação Prática
+
+- Bucket Sort foi mais rápido para listas grandes e distribuídas.
+- Gnome Sort teve desempenho aceitável apenas para listas pequenas ou no caso da lista já estar ordenada.
+- Ambos retornaram resultados corretos, mas o Bucket Sort se destacou em eficiência.
+
+## Conclusão
+
+O estudo mostrou que o Bucket Sort é mais indicado para listas grandes e distribuídas uniformemente, enquanto o Gnome Sort é útil para fins didáticos e listas pequenas. A escolha do algoritmo depende do contexto e do tipo de dados. O uso de algoritmos de ordenação adequados pode impactar significativamente o desempenho das aplicações.
+
+## Referências Bibliográficas
+
+- Cormen, Thomas H., et al. "Instructor’s Manual." (2002).
+- Seward, H. H. (1957). Information sorting in the application of electronic digital computers to business operations. Commun. ACM.
+- Lacarak, I. (2000). Gnome Sort - The Sorting Algorithm for Gnomes.
+
+## Links Úteis
+
+- [bucket sort - geeksforgeeks.org](https://www.geeksforgeeks.org/dsa/bucket-sort-2/)
+- [programiz.com](https://www.programiz.com/dsa/bucket-sort)
+- [gnome sort - geeksforgeeks.org](https://www.geeksforgeeks.org/dsa/gnome-sort-a-stupid-one/)
+- [gnome sort - rosettacode](https://rosettacode.org/wiki/Sorting_algorithms/Gnome_sort)
