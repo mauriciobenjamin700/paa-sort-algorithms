@@ -7,7 +7,7 @@ Equipe:
 
 ## Introdução
 
-Este trabalho apresenta o estudo dos algoritmos de ordenação Bucket Sort e Gnome Sort, abordando suas definições, funcionamento, aspectos históricos, análise de complexidade, comparação de desempenho, resultados práticos e conclusões. O objetivo é compreender as diferenças, vantagens e limitações de cada método, utilizando exemplos e testes realizados na mesma plataforma.## Introdução
+Este trabalho apresenta o estudo dos algoritmos de ordenação Bucket Sort e Gnome Sort, abordando suas definições, funcionamento, aspectos históricos, análise de complexidade, comparação de desempenho, resultados práticos e conclusões. O objetivo é compreender as diferenças, vantagens e limitações de cada método, utilizando exemplos e testes realizados na mesma plataforma.
 
 ## Introdução ao Bucket Sort
 
