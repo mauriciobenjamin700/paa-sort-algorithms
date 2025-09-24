@@ -13,7 +13,11 @@ Este trabalho apresenta o estudo dos algoritmos de ordenação Bucket Sort e Gno
 
 O Bucket Sort é um algoritmo de ordenação criado para lidar de forma eficiente com listas de dados que possuem valores distribuídos de maneira relativamente uniforme. Ele foi proposto por Harold H. Seward em 1957, inicialmente para uso em computadores da IBM, e é considerado uma variação dos algoritmos de ordenação por distribuição.
 
-O propósito do Bucket Sort é dividir os elementos em grupos (baldes) de acordo com seus valores, facilitando a ordenação interna de cada grupo e acelerando o processo de ordenação total. Ao invés de comparar cada elemento com todos os outros, como em algoritmos tradicionais, o Bucket Sort aproveita a distribuição dos dados para reduzir o número de comparações necessárias.
+O propósito do Bucket Sort é dividir os elementos em grupos (baldes) de acordo com seus valores, facilitando a ordenação interna de cada grupo e acelerando o processo de ordenação total. Ao invés de comparar cada elemento com todos os outros, como em algoritmos tradicionais, o Bucket Sort aproveita a distribuição dos dados para reduzir o número de comparações necessárias. A Figura 1 apresenta uma visualização desse procedimento
+
+![Estrutura do Bucket Sort](./images/bucket.png)
+
+Figura 1: Visualização do bucket sort | Fonte:[geeksforgeeks.org](geeksforgeeks.org)
 
 Esse método é especialmente útil para grandes volumes de dados que já estão quase ordenados ou distribuídos uniformemente, como dados de sensores, notas de alunos, ou qualquer situação em que os valores estejam espalhados de forma previsível.
 
@@ -395,6 +399,22 @@ Esse teste de mesa mostra como o Gnome Sort percorre, compara e troca elementos 
   - Lembra o Bubble Sort, mas volta após cada troca.
 
 ### Comparação Prática
+
+Após a realização de um experimento prático, onde foram usados vetores de números inteiros de tamanho 10, 100, 1.000, 10.000 e 100.000 números, pode-se observar algumas características de comportamento dos algoritmos. As Figuras 2, 3 e 4 apresentam visualmente esse comportamento.
+
+![Entradas Ordenadas](./results/sorted_comparison.png)
+
+Figura 2: Comparação entre algoritmos, dado entradas ordenadas indo de 10 a 100.000 itens.
+
+![Entradas Desordenadas](./results/unsorted_comparison.png)
+
+Figura 3: Comparação entre algoritmos, dado entradas desordenadas indo de 10 a 100.000 itens.
+
+![Entradas Aleatórias](./results/random_comparison.png)
+
+Figura 4: Comparação entre algoritmos, dado entradas completamente aleatórias indo de 10 a 100.000 itens.
+
+Após observar as figuras, podemos observar alguns pontos, sendo eles:
 
 - Bucket Sort foi mais rápido para listas grandes e distribuídas.
 - Gnome Sort teve desempenho aceitável apenas para listas pequenas ou no caso da lista já estar ordenada.

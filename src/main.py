@@ -125,19 +125,22 @@ def run_comparative_analysis():
     save_multiple_plots(
         sizes,
         all_times_sorted,
-        "results/sorted_comparison.png"
+        "results/sorted_comparison.png",
+        "Comparação de Algoritmos de Ordenação - Listas Ordenadas"
     )
 
     save_multiple_plots(
         sizes,
         all_times_unsorted,
-        "results/unsorted_comparison.png"
+        "results/unsorted_comparison.png",
+        "Comparação de Algoritmos de Ordenação - Listas Desordenadas"
     )
 
     save_multiple_plots(
         sizes,
         all_times_random,
-        "results/random_comparison.png"
+        "results/random_comparison.png",
+        "Comparação de Algoritmos de Ordenação - Listas Aleatórias"
     )
 
     with open("results/sorted_times.json", "w") as f:

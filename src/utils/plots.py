@@ -71,7 +71,8 @@ def plot_multiple_sorting_times(
 def save_multiple_plots(
     sizes: list[int],
     all_times: dict[str, list[float]],
-    filename: str
+    filename: str,
+    title: str
 ):
     """
     Salva o gráfico comparativo de tempos de execução para múltiplos
@@ -87,7 +88,7 @@ def save_multiple_plots(
         plt.plot(sizes, times, label=algorithm_name)
     plt.xlabel("Tamanho da entrada")
     plt.ylabel("Tempo (ms)")
-    plt.title("Comparação de Algoritmos de Ordenação")
+    plt.title(title)
     plt.legend()
     plt.savefig(filename)
     plt.close()
